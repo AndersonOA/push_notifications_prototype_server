@@ -2,7 +2,9 @@ package com.example.alejandrosanchezaristizabal.pushnotificationsprototype.servi
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +47,7 @@ public class GcmNotificationsSenderImpl implements GcmNotificationsSender {
     }
     else {
       // It's a multicast notification.
-      if (registrationIds != null) {
+      if (!registrationIds.isEmpty()) {
         System.out.println("It´s a multicast notification");
         sendAsyncNotification(notification, registrationIds);
       }
@@ -56,14 +58,18 @@ public class GcmNotificationsSenderImpl implements GcmNotificationsSender {
    * Retrieves the Registration-IDs for the notification.
    */
   public List<String> getRegistrationIds(Notification notification) {
-    List<String> registrationIds = new ArrayList<>();
     String[] userIds = notification.getUserIds();
+    Set<Long> retrievedUserIds = new HashSet<>();
+    List<String> registrationIds = new ArrayList<>();
     if (userIds != null) {
       for (int i = 0; i < userIds.length; ++i) {
         // It's necessary to parse the id because it's not a long variable.
         long userId = Long.parseLong(userIds[i]);
-        User user = userRepository.findOne(userId);
-        if (user != null) registrationIds.add(user.getRegistrationId());
+        if (retrievedUserIds.add(userId)) {
+          // It's necessary to add only non-already-added Registration-IDs.
+          User user = userRepository.findOne(userId);
+          if (user != null) registrationIds.add(user.getRegistrationId());
+        }
       }
     }
         
