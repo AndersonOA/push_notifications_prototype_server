@@ -7,13 +7,16 @@ This app server saves users with their respective Registration-IDs for their And
 * Download this project and the [push_notifications_prototype][push_notif_proto].
 
 * Import both projects into the corresponding IDEs.
+
 * In this project, set the value of the constant server.port (under ${PROJECT_HOME}/src/main/resources/application.properties file) with another port and remove the '#' character if you don't want to work with the default port (i.e. 8080). Something like:
 
     ```sh
    server.port = 8081
     ```
     > Make sure that you use the same port in the  [push_notifications_prototype][push_notif_proto].
+
 * Run this project first and make sure that it starts successfully before you start playing with the [push_notifications_prototype][push_notif_proto].
+
 * Run the [push_notifications_prototype][push_notif_proto] and only after you see in the screen that your device was successfully registered, you are ready to send push notifications to it.
 
 ### Sending a push notification
@@ -38,7 +41,7 @@ Request Raw Body:
 
 > For the purpose of this prototype, the User-IDs are going to be auto-incremented positive integers starting with ID = 1. The userIds are sent as Strings so that those identifiers can be easyly extended in the future to more complex ones.
 
-> How to know which userId to use? Well, in theory you could use any positive integer, because the app server is not going to crash if an id doesn't exist. If an id doesn't exist, the notification won't be sent to that particular addressee. But to keep it simple, use any positive integer between 1 and the number of devices you have already registered.
+> How to know which userId to use? Well, in theory you could use any positive integer, because the app server is not going to crash if an id doesn't exist. If an id doesn't exist, the notification won't be sent to that particular addressee. But to keep it simple, use any positive integer between "1" and the number of devices you have already registered.
 
 
 
