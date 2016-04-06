@@ -35,4 +35,10 @@ public class User {
   public void setRegistrationId(String registrationId) {
     this.registrationId = registrationId;
   }
+  
+  @Override
+  public String toString() {
+    return "{id = '" + id + "', name = '" + name + "', registrationId = '" 
+      + registrationId  + "'}";
+  }
 }

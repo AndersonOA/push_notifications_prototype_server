@@ -25,6 +25,7 @@ public class UserController {
   @RequestMapping(value = "/register", method = RequestMethod.POST, 
     headers = "Content-Type=application/json")
   public @ResponseBody User saveRegistrationId(@RequestBody User userJson) {
+    System.out.println("User to save: " + userJson.toString());
     User user = userRepository
       .findByRegistrationId(userJson.getRegistrationId());
     if (user == null) {
@@ -36,6 +37,29 @@ public class UserController {
       // The user wasn't properly saved.
       user = new User();
       System.out.println("Registration-ID couldn't be saved");
+    }
+
+    return user;
+  }
+  
+  /**
+   * Updates the user with his refreshed Registration-ID for GCM.
+   */
+  @RequestMapping(value = "/updateRegistrationId", method = RequestMethod.POST, 
+    headers = "Content-Type=application/json")
+  public @ResponseBody User updateRegistrationId(@RequestBody User userJson) {
+    System.out.println("User to update: " + userJson.toString());
+    User user = userRepository.findOne(userJson.getId());
+    if (user != null) {
+      // The Registration-ID already exist.
+      user.setRegistrationId(userJson.getRegistrationId());
+      user = userRepository.save(user);
+      System.out.println("Registration-ID was successfully updated");
+    }
+    if (user == null) {
+      // The user didn't exist or wasn't properly saved.
+      user = new User();
+      System.out.println("Registration-ID couldn't be updated");
     }
 
     return user;
