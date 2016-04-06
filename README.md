@@ -1,7 +1,7 @@
 # push_notifications_prototype_server
 A Proof of Concept for an Android Push Notifications Server.
 
-This app server saves users with their respective Registration-IDs for their Android devices in order to be able to send push notifications to them. There is a service for pushing unicast as well as multicast notifications from this app server (i.e. to a unique device or to a group of devices at the same time).
+This app server saves users with their respective Registration-IDs for their Android devices in order to be able to send push notifications to them. There is a service for pushing unicast as well as multicast notifications from this app server (i.e. to a unique device or to a group of devices at the same time). There is also another service to update a user's Registration-ID whenever it has been refreshed by GCM.
 
 ### Instructions
 * Download this project and the [push_notifications_prototype][push_notif_proto].
