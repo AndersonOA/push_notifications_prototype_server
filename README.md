@@ -43,8 +43,17 @@ Request Raw Body:
 
 > How to know which userId to use? Well, in theory you could use any positive integer, because the app server is not going to crash if an id doesn't exist. If an id doesn't exist, the notification won't be sent to that particular addressee. But to keep it simple, use any positive integer between "1" and the number of devices you have already registered.
 
+### References
+* [GCM Rest Service] - Google Cloud Messaging Rest Service (Visited on April 2016).
+* [Sending GCM Notification] - Sending GCM Notification From server – Spring Framework Java (Visited on April 2016).
+* [Spring MVC JSON] - Spring MVC JSON (JSON to Java) (Visited on April 2016).
+* [Downstream Messaging] - Simple Downstream Messaging (Visited on April 2016).
 
 
 [//]: # (These are reference links used in the body of this note)
    [push_notif_proto]: <https://github.com/ibalejandro/push_notifications_prototype>
    [postman]: <https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop>
+   [GCM Rest Service]: <https://github.com/marlandy/gcm-rest>
+   [Sending GCM Notification]: <http://www.devnub.com/sending-gcm-notification-from-server-spring-framework-java/>
+   [Spring MVC JSON]: <http://hmkcode.com/spring-mvc-json-json-to-java/>
+   [Downstream Messaging]: <https://developers.google.com/cloud-messaging/downstream>
