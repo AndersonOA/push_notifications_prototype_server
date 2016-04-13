@@ -27,7 +27,7 @@ It should be called when you want to send a notification to one or many devices.
 You can use [Postman][postman] or any other REST Client in order to invoke the push-notification service. Your request should be something like:
 
 ```
-Url: http://YOUR_IP:PORT/pushNotification
+Url: http://YOUR_IP_ADDRESS:PORT/pushNotification
 Content-Type: application/json
 Method: POST
 Request Raw Body: 
